@@ -1,0 +1,143 @@
+*{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+}
+.container{
+    width: 1000px;
+    height: auto;
+    /*border: 1px solid #000;*/
+    margin: auto;
+	
+}
+.header{
+    width: 100%;
+    height: 200px;
+    /*border: 1px solid #000;*/
+}
+.menu{
+    width: 100%;
+    height: 40px;
+    /*border: 1px solid #000;*/
+    background: #00CC00;
+}
+.menu ul{
+    width: 100%;
+    height: 40px;
+   
+}
+.menu ul li{
+    float: left;
+    line-height: 40px;
+    margin-left: 20px;
+    list-style-type: none;
+}
+.menu ul li a{
+    color: #000;
+    text-decoration: none;
+    padding: 10px;
+}
+.menu a:hover{
+    text-decoration:underline;
+    background: #FFCC33;
+    
+    color: red;
+}
+.search{
+    padding: 10px 10px 10px 10px;
+    text-align: right;
+}
+.content{
+	/*background: blue;*/
+    height: auto;
+    width: 100%;
+    /*border: 1px solid #000;*/
+    margin-top: 5px;
+}
+.left{
+    width: 200px;
+    background:white;
+    float: left;
+    height: 800px;
+    border: 1px solid#000;
+    float: left;
+}
+.left .menucate ul{
+    width: 100%;
+    height: auto;
+    list-style:none;
+    height: 250px;
+}
+.menucate ul li{
+    margin-left: 10px;
+    margin: 5px;
+    font-size: 18px;
+
+}
+.menucate a{
+    text-decoration: none;
+    color: black;
+}
+.menucate a:hover{
+    text-decoration:underline;
+    background:#FFCC99; 
+}
+
+.productnew{
+   width:200px;
+   height:540px;
+    text-align: center;
+    float: left;
+    margin: 3px;
+    list-style-type: none;
+}
+  
+}
+.productnew ul li{
+    width: 200px;
+    height: 540px;
+    text-align: center;
+    float: left;
+    margin: 5px;
+
+}
+
+.right{
+    border: 1px solid#000;
+    width: 790px;
+    background: white;
+    height: 800px;
+    float: right;
+}
+.product li{
+    width: 100%;
+    list-style-type:  none;
+}
+.product ul li{
+    width: 200px;
+    height: auto;
+    text-align: center;
+    float: left;
+    padding: 25px 30px 20px 30px;
+}
+.product ul li a{
+    text-decoration: none;
+}
+
+.clear{
+    clear: both;
+}
+
+.footer{   
+    width: 970px;
+    height: auto;
+    /*border: 1px solid #000;*/
+    float: left;   
+    background: green;
+    color: white;
+    margin-top: 5px;
+    padding: 15px;
+}
+/*cô...*/
+
+/*product*/
