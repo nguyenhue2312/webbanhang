@@ -19,6 +19,10 @@
 		@$price = $_POST['price'];
 		@$sale = $_POST['sale'];
 		@$qty = $_POST['qty'];
+	      $errors= array();
+	            
+	      
+	   
 
 		if (isset($_POST['save'])) {
 			if (empty($nameproduct)||empty($code)||empty($price)||empty($sale)||empty($qty)) 
@@ -26,8 +30,13 @@
 					$err = 'Bạn Chưa Nhập thuộc tính này';
 				}
 				else  {
-				$sql = "INSERT INTO product (cate_id,name,code,price,sale,qty,status)
-				VALUES ('5','".$nameproduct."','".$code."','".$price."','".$sale."','".$qty."','".$_POST['status']."')";
+					$file_name = time().$_FILES['images']['name'];
+				    $file_tmp = $_FILES['images']['tmp_name'];
+				    move_uploaded_file($file_tmp,"../../public/backend/image/".$file_name);
+
+
+				$sql = "INSERT INTO product (cate_id,name,code,price,sale,qty,status, image)
+				VALUES ('".$category."','".$nameproduct."','".$code."','".$price."','".$sale."','".$qty."','".$_POST['status']."','".$file_name."')";
 				if ($conn->query($sql) === TRUE) 
 					{
 						@$tb = "Lưu Thành Công";
@@ -55,7 +64,7 @@
 				<a href="index.html">Home</a> 
 				<i class="icon-angle-right"></i>
 			</li>
-			<li><a href="#">Category</a></li>
+			<li><a href="#">Product</a></li>
 		</ul>
 		<div class="row-fluid sortable">
 				<div class="box span12">
@@ -132,7 +141,7 @@
 							 <div class="control-group">
 								<label class="control-label">File Image</label>
 								<div class="controls">
-								  <input type="file">
+								  <input type="file" name="images">
 								</div>
 							  </div>
 

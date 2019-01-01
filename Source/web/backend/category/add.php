@@ -1,6 +1,7 @@
 
 <title>Category</title>
 <?php
+
 	include('../../db/connect.php');
 	include('../layout/header.php');
 	include('../layout/navbar.php');

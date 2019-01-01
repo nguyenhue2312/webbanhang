@@ -24,31 +24,13 @@
 								<li><a class="submenu" href="../product/add.php"><i class="icon-file-alt"></i><span class="hidden-tablet"> Add</span></a></li>
 							</ul>	
 						</li>
-						<li>
-							<a href="tasks.html"><i class="icon-tasks"></i>
-								<span class="hidden-tablet"> Product</span>
-							</a>
-						</li>
+						
 						<li>
 							<a href="tasks.html"><i class="icon-tasks"></i>
 								<span class="hidden-tablet"> Order</span>
 							</a>
 						</li>
-						<li>
-							<a href="tasks.html"><i class="icon-tasks"></i>
-								<span class="hidden-tablet"> Banner</span>
-							</a>
-						</li>
-						<li>
-							<a href="tasks.html"><i class="icon-tasks"></i>
-								<span class="hidden-tablet"> Customer</span>
-							</a>
-						</li>
-						<li>
-							<a href="tasks.html"><i class="icon-tasks"></i>
-								<span class="hidden-tablet"> Product</span>
-							</a>
-						</li>						
+											
 					</ul>
 				</div>
 			</div>

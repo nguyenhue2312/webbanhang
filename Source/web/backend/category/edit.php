@@ -10,18 +10,22 @@
 	<?php 
 
 		@$namecate = $_POST['namecate'];
-
+		if (isset($_GET['id']))
+			{
+				$id = $_GET['id'];	
+			}
 		if (isset($_POST['save'])) {
 		if (empty($namecate)) 
 			{
 				$err = 'Bạn Chưa Nhập Name';
 			}
-			else  {
-			$sql = "INSERT INTO category (name, status)
-			VALUES ('".$namecate."','".$_POST['status']."')";
+			else  { 
+			$sql = "UPDATE  category SET name = '".$namecate."', status = '".$_POST['status']."' WHERE id = '".$id."'" ;
+			// var_dump($sql);die();
+
 			if ($conn->query($sql) === TRUE) 
 				{
-					@$tb = "Lưu Thành Công";
+					@$tb = "update Thành Công";
 				} else {
 						$tb =  "Error: " . $sql . "<br>" . $conn->error;
 						}
@@ -29,6 +33,14 @@
 				}			
 							
 	?>	
+	<?php 
+		$sql2 = "select * from category where id = '".$id."'";
+		// $query2 = mysqli_fetch_assoc($sql2);
+		$query2 = mysqli_query($conn, $sql2);
+		while ($row = $query2->fetch_array(MYSQLI_ASSOC)) {
+        $name       = $row['name'];
+        $status        = $row['status'];
+		?>
 
 		<noscript>
 			<div class="alert alert-block span10">
@@ -54,11 +66,12 @@
 					<div class="box-content">					
 							<p><?php echo @$tb; ?></p>
 						<form class="form-horizontal" action="" method="post">
+						
 						  <fieldset>
 							<div class="control-group">
 							  <label class="control-label" for="typeahead">Name Category</label>
 							  <div class="controls">
-								<input type="text" class="span6 typeahead" id="typeahead"  data-provide="typeahead" data-items="4" name="namecate" " >
+								<input type="text" class="span6 typeahead" id="typeahead" data-items="4" name="namecate" value="<?php echo $name; ?>" >
 								<p style="color: red"><?php echo @$err; ?></p>
 							  </div>
 							</div>	
@@ -66,8 +79,22 @@
 								<label class="control-label" for="typeahead">Status</label>
 								<div class="controls">
 									  <select id="selectError3" name="status">
-										<option value="1">Enable</option>
-										<option value="0"> Disable</option>
+									  	<?php 
+									  		if ($status == 0) {
+									  			?>
+									  			<option value="1">Enable</option>
+												<option value="0" selected=""> Disable</option>
+									  		<?php
+									  	}
+									  		else{
+									  			?>
+									  			<option value="1" selected="">Enable</option>
+												<option value="0"> Disable</option>
+									  		<?php
+									  		
+									  		}
+									  	 ?>
+										
 									  </select>
 									</div>
 							</div>						
@@ -77,6 +104,9 @@
 							  <button type="reset" class="btn">Cancel</button>
 							</div>
 						  </fieldset>
+						  <?php 
+						}
+						   ?>
 						</form>   
 
 					</div>

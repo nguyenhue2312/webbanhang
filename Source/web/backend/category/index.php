@@ -24,21 +24,42 @@
 			</li>
 			<li><a href="#">Category</a></li>
 		</ul>
-		<div class="row-fluid sortable">		
+		<div class="row-fluid">		
 			<div class="box span12">
 				<div class="box-header" data-original-title>
 					<h2><i class="halflings-icon white user"></i><span class="break"></span>Category</h2>
-					<div class="box-icon">
-						<a href="/add.php" class="btn-minimize"><i></i></a>
-					</div>
 				</div>
 				<div class="box-content">
 					<?php
-						$sql = 'select *from category'; 
-						$result = $conn->query($sql);	
+
+						$result = mysqli_query($conn, 'select count(id) as total from category');
+				        $row = mysqli_fetch_assoc($result);
+				        $total_records = $row['total'];
+
+						$current_page = isset($_GET['page']) ? $_GET['page'] : 1;
+       	 				$limit = 10;
+       	 				$total_page = ceil($total_records / $limit);
+       	 				 if ($current_page > $total_page){
+				            $current_page = $total_page;
+				        }
+				        else if ($current_page < 1){
+				            $current_page = 1;
+				        }	
+				        $start = ($current_page - 1) * $limit;
+
+				        $result = mysqli_query($conn, "SELECT * FROM category LIMIT $start, $limit");
+
+				       
 						// var_dump($category);				
 					?>
-					<table class="table table-striped table-bordered bootstrap-datatable datatable">
+					<!-- <p>
+						<?php 
+							if (isset($tb)) {
+								echo $tb;
+							}
+						 ?>
+					</p> -->
+					<table class="table table-striped table-bordered ">
 					  <thead>
 						  <tr>
 							  <th>Stt</th>
@@ -49,8 +70,7 @@
 					  </thead>   
 					  <tbody>
 					  	<?php
-					  		if ($result->num_rows > 0) {
-					  			 while($row = $result->fetch_assoc()) {
+					  			 while($row = mysqli_fetch_assoc($result)) {
 					  			?>
 					  			<tr>
 									<td><?php echo $row["id"]?></td>
@@ -75,12 +95,41 @@
 									</td>
 								</tr>
 					  		<?php					  			
-					  			}
+					  			
 							} 
 					  	?>
+					  	
 										
 					  </tbody>
-				  </table>            
+				  </table> 
+				  <div class="pagination">
+				           <?php 
+				            // PHẦN HIỂN THỊ PHÂN TRANG
+				            // BƯỚC 7: HIỂN THỊ PHÂN TRANG
+				 
+				            // nếu current_page > 1 và total_page > 1 mới hiển thị nút prev
+				            if ($current_page > 1 && $total_page > 1){
+				                echo '<a href="index.php?page='.($current_page-1).'">Prev</a> | ';
+				            }
+				 
+				            // Lặp khoảng giữa
+				            for ($i = 1; $i <= $total_page; $i++){
+				                // Nếu là trang hiện tại thì hiển thị thẻ span
+				                // ngược lại hiển thị thẻ a
+				                if ($i == $current_page){
+				                    echo '<span>'.$i.'</span> | ';
+				                }
+				                else{
+				                    echo '<a href="index.php?page='.$i.'">'.$i.'</a> | ';
+				                }
+				            }
+				 
+				            // nếu current_page < $total_page và total_page > 1 mới hiển thị nút prev
+				            if ($current_page < $total_page && $total_page > 1){
+				                echo '<a href="index.php?page='.($current_page+1).'">Next</a> | ';
+				            }
+				           ?>
+				        </div>           
 				</div>
 			</div><!--/span-->
 		

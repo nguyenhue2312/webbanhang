@@ -38,3 +38,13 @@
 	<!-- end: Favicon -->		
 </head>
 <body>
+	<?php
+
+if (isset($_SESSION['email'])) {
+	session_start();
+	// header('Location:../admin/sign-in.php');
+}
+// else{
+// 	header('Location:../dashboard/index.php');
+// }
+// ?>

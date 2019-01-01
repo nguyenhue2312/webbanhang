@@ -1,3 +1,9 @@
+<?php
+
+	if (isset($_SESSION['email'])) {
+		header('Location: ../admin/sign-in.php');
+	}
+?>
 <div class="navbar">
 	<div class="navbar-inner">
 		<div class="container-fluid">
@@ -177,7 +183,8 @@
 									<span class="avatar"><img src="img/avatar.jpg" alt="Avatar"></span>
 									<span class="header">
 										<span class="from">
-									    	Dennis Ji
+									    	
+
 									     </span>
 										<span class="time">
 									    	6 min
@@ -261,7 +268,7 @@
 					<!-- start: User Dropdown -->
 					<li class="dropdown">
 						<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-							<i class="halflings-icon white user"></i> Dennis Ji
+							<i class="halflings-icon white user"></i> <?php echo @$_SESSION['email']; ?>
 							<span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
@@ -269,7 +276,7 @@
 									<span>Account Settings</span>
 							</li>
 							<li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-							<li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+							<li><a href="../admin/logout.php"><i class="halflings-icon off"></i> Logout</a></li>
 						</ul>
 					</li>
 					<!-- end: User Dropdown -->

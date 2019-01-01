@@ -7,13 +7,12 @@
 			{
 				$id = $_GET['id'];	
 			}
-		$sql = "DELETE FROM category WHERE id= '".$id."'";
+		$sql = "DELETE FROM product WHERE id= '".$id."'";
 
-		if ($conn->query($sql) === TRUE) {
-		    $tb = "Record deleted successfully";		   
+		if ($conn->query($sql) === TRUE) {		   
 		    header("location:index.php");
 		} else {
-		    $tb = "Error deleting record: " . $conn->error;
+		    $tb1 = "Error deleting record: " . $conn->error;
 		}
 		// $_SESSION['thongbao'] = $tb;
  ?>
